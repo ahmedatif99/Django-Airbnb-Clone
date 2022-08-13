@@ -1,4 +1,4 @@
-property : - name - main image - images _ - price/day - description - place _
+property : - name - main image - images _ - price/day - description - place _ - category
 
     - rateing *:
       - room show rating
