@@ -1,25 +1,55 @@
-property : - name - main image - images _ - price/day - description - place _ - category
+- property :
 
-    - rateing *:
+  - name
+  - main image
+  - images \*
+  - price/day
+  - description
+  - place \*
+  - category
+
+    - rateing \*:
+
       - room show rating
       - add rate [booked]
-      - room  ==> avg rating
+      - room ==> avg rating
 
-    - booking *:
+    - booking \*:
       - book
       - check availabilty
     - related rooms
 
 Users
 
-blog : - title - tage _ - image - created at - author - description - categories _
+- blog :
 
-    - comments *
+  - title
+  - tage \*
+  - image
+  - created at
+  - author
+  - description
+  - categories \*
 
-about : - image - what we do - our mission - our goal
+  - comments \*
 
-    - FAQs
-      - title
-      - desc
+- About :
 
-Website : - phone - address - email - name - logo - desc - fb_link - tw_link - ins_link
+  - image
+  - what we do
+  - our mission
+  - our goal
+  - FAQs :
+    - title
+    - desc
+
+- Website :
+  - phone
+  - address
+  - email
+  - name
+  - logo
+  - desc
+  - fb_link
+  - tw_link
+  - ins_link
