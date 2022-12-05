@@ -10,6 +10,7 @@ class Settings(models.Model):
     fb_link = models.URLField(max_length=200)
     tw_link = models.URLField(max_length=200)
     ins_link = models.URLField(max_length=200)
+    address = models.CharField(max_length=100)
 
     def __str__(self):
         return self.site_name

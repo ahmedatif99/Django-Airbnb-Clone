@@ -42,13 +42,14 @@
     <link rel="stylesheet" href="{% static 'css/icomoon.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
+
   <body>
     <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
       id="ftco-navbar"
     >
       <div class="container">
-        <a class="navbar-brand" href="index.html">dirEngine.</a>
+        <a class="navbar-brand" href="/">{{myfooter.site_name}}</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -64,19 +65,19 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a href="index.html" class="nav-link">Home</a>
+              <a href="/" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="about.html" class="nav-link">About</a>
+              <a href="about/" class="nav-link">About</a>
             </li>
             <li class="nav-item">
               <a href="tour.html" class="nav-link">Tour</a>
             </li>
             <li class="nav-item active">
-              <a href="hotel.html" class="nav-link">Hotels</a>
+              <a href="property/" class="nav-link">Hotels</a>
             </li>
             <li class="nav-item">
-              <a href="blog.html" class="nav-link">Blog</a>
+              <a href="blog/" class="nav-link">Blog</a>
             </li>
             <li class="nav-item">
               <a href="contact.html" class="nav-link">Contact</a>
@@ -99,22 +100,25 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">dirEngine</h2>
-              <p>
-                Far far away, behind the word mountains, far from the countries
-                Vokalia and Consonantia, there live the blind texts.
-              </p>
+              <h2 class="ftco-heading-2">{{myfooter.site_name}}</h2>
+              <p>{{myfooter.description}}</p>
               <ul
                 class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
               >
                 <li class="ftco-animate">
-                  <a href="#"><span class="icon-twitter"></span></a>
+                  <a href="{{myfooter.tw_link}}"
+                    ><span class="icon-twitter"></span
+                  ></a>
                 </li>
                 <li class="ftco-animate">
-                  <a href="#"><span class="icon-facebook"></span></a>
+                  <a href="{{myfooter.fb_link}}"
+                    ><span class="icon-facebook"></span
+                  ></a>
                 </li>
                 <li class="ftco-animate">
-                  <a href="#"><span class="icon-instagram"></span></a>
+                  <a href="{{myfooter.ins_link}}"
+                    ><span class="icon-instagram"></span
+                  ></a>
                 </li>
               </ul>
             </div>
@@ -155,21 +159,18 @@
                 <ul>
                   <li>
                     <span class="icon icon-map-marker"></span
-                    ><span class="text"
-                      >203 Fake St. Mountain View, San Francisco, California,
-                      USA</span
-                    >
+                    ><span class="text">{{myfooter.address}}</span>
                   </li>
                   <li>
                     <a href="#"
                       ><span class="icon icon-phone"></span
-                      ><span class="text">+2 392 3929 210</span></a
+                      ><span class="text">{{myfooter.phone}}</span></a
                     >
                   </li>
                   <li>
                     <a href="#"
                       ><span class="icon icon-envelope"></span
-                      ><span class="text">info@yourdomain.com</span></a
+                      ><span class="text">{{myfooter.email}}</span></a
                     >
                   </li>
                 </ul>
