@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import FormMixin
 
 # Create your views here.
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Property
 from .forms import PropertyBookForm
 from .filters import PropertyFilters
@@ -38,3 +38,6 @@ class PropertyDetail(FormMixin, DetailView):
             return redirect('/')
         
         # book
+
+class AddListing(CreateView):
+    pass

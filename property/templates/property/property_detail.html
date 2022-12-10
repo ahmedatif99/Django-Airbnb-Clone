@@ -174,9 +174,15 @@
                             </div>
                         </div>
                     </div>
+
+                    {% if object.check_availability == 'Available'  %}
+                    <h4>Available Today</h4>
+                    {% else %}
+                    <h4 class='text-danger'>It's Being booked, The reservation is {{object.check_availability}}</h4>
+                    {% endif %}
+
                     <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
                         <h4 class="mb-5">Check Availability &amp; Booking</h4>
-                        
                         <form method='post' class='form'>
                             {% csrf_token %}
                             {% bootstrap_form form %}
@@ -298,12 +304,12 @@
                             {% for property in related %}
                             <div class="col-md-4">
                                 <div class="destination">
-                                    <a href="hotel-single.html" class="img img-2"
+                                    <a href="{{property.get_absolute_url}}" class="img img-2"
                                         style='background-image: url({{property.image.url}});'></a>
                                     <div class="text p-3">
                                         <div class="d-flex">
                                             <div class="one">
-                                                <h3><a href="hotel-single.html">{{property.place}}</a></h3>
+                                                <h3><a href="{{property.get_absolute_url}}">{{property.place}}</a></h3>
                                                 <p class="rate">
                                                     <i class="icon-star"></i>
                                                     <i class="icon-star"></i>
