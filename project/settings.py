@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     
     'blog',
     'property',
@@ -160,7 +161,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static", "staticroot")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
+    # '/var/www/static/',
 ]
 
 # STATICFILES_DIRS = [
@@ -177,3 +178,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 X_FRAME_OPTIONS = 'SAMEPRIGIN'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ahmedahmed1919a@gmail.com'
+EMAIL_HOST_PASSWORD = 'utwvwkhikijaebef'
+EMAIL_USE_TLS = True
+EMAIL_PORT = '587'
