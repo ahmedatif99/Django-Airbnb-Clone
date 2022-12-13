@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -65,44 +65,66 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a href="/" class="nav-link">Home</a>
+              <a href="/" class="nav-link">{% translate "Home" %}</a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'about:about' %}" class="nav-link">About</a>
+              <a href="{% url 'about:about' %}" class="nav-link">
+                {% translate "About" %}
+              </a>
             </li>
             <li class="nav-item">
               <a href="{% url 'property:property_list' %}" class="nav-link"
-                >Properties</a
+                >{% translate "Properties" %}</a
               >
             </li>
             <li class="nav-item">
-              <a href="{% url 'blog:post_list' %}" class="nav-link">Blog</a>
+              <a href="{% url 'blog:post_list' %}" class="nav-link"
+                >{% translate "Blog" %}</a
+              >
             </li>
             <li class="nav-item">
-              <a href="{% url 'home:contact_us' %}" class="nav-link">Contact</a>
+              <a href="{% url 'home:contact_us' %}" class="nav-link"
+                >{% translate "Contact" %}</a
+              >
             </li>
             <li class="nav-item cta">
-              <a href="" class="nav-link"><span>Add listing</span></a>
+              <a href="" class="nav-link"
+                ><span>{% translate "Add listing" %}</span></a
+              >
             </li>
 
             {% if request.user.is_authenticated %}
             <li class="nav-item cta">
               <a href="{% url 'accounts:profile' %}" class="nav-link"
-                >Profile</a
+                >{% translate "Profile" %}</a
               >
             </li>
             {% else %}
             <li class="nav-item cta">
               <a href="{% url 'login' %}" class="nav-link"
-                ><span>Login</span></a
+                ><span>{% translate "Login" %}</span></a
               >
             </li>
             <li class="nav-item cta">
               <a href="{% url 'accounts:signup' %}" class="nav-link"
-                ><span>Sign Up</span></a
+                ><span>{% translate "Sign Up" %}</span></a
               >
             </li>
             {% endif %}
+            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+              <input name="next" type="hidden" value="{{ redirect_to }}">
+              <select name="language">
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for LANGUAGES as languages %}
+                  {% for language in languages %}
+                      <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                          {{ language.name_local }} ({{ language.code }})
+                      </option>
+                  {% endfor %}
+              </select>
+              <input type="submit" value="Go">
+          </form>
           </ul>
         </div>
       </div>
