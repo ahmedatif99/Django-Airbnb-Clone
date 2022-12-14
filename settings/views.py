@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 from property.models import Property, Place, Category
 from blog.models import Post
+from .tasks import send_mail_task
+from .models import Settings
 
 # Create your views here.
 
@@ -57,4 +59,13 @@ def category_filter(request, category):
     return render(request, 'settings/home_serach.html', {'property_list':property_list})
 
 def contact_us(request):
-    pass
+    site_info = Settings.objects.last()
+    if request.method == 'POST':
+        subject = request.POST['subject']
+        name = request.POST['name']
+        email = request.POST['email']
+        message = request.POST['message']
+
+        send_mail_task(subject , name,email,message)
+    
+    return render(request,'settings/contact.html',{'site_info': site_info})
