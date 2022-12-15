@@ -3,7 +3,7 @@ from django.db.models.query_utils import Q
 from django.db.models import Count
 from django.contrib.auth.models import User
 
-from property.models import Property, Place, Category
+from property.models import Property, Place, Category, PropertyBook
 from blog.models import Post
 from .tasks import send_mail_task
 from .models import Settings
@@ -69,3 +69,21 @@ def contact_us(request):
         send_mail_task(subject , name,email,message)
     
     return render(request,'settings/contact.html',{'site_info': site_info})
+
+def dashboard(request):
+    users_count = User.objects.all().count()
+    places_count = Property.objects.filter(category__name='Places').count()
+    resturant_count = Property.objects.filter(category__name='Resturant').count()
+    hotels_count = Property.objects.filter(category__name='Hotels').count()
+    posts_count = Post.objects.all().count()
+    booking_count = PropertyBook.objects.all().count()
+    
+
+    return render(request, 'settings/dashboard.html', {
+        'users_count': users_count,
+        'places_count': places_count,
+        'resturant_count': resturant_count,
+        'hotels_count': hotels_count,
+        'posts_count': posts_count,
+        'booking_count': booking_count,
+    })

@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% load static %} {% block body %}
+
+<div class="hero-wrap js-fullheight" style='background-image: url({% static 'images/bg_2.jpg' %})'>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+      data-scrollax-parent="true">
+      <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+          <span class="mr-2"><a href="index.html">Home</a></span>
+          <span>Dashboard</span>
+        </p>
+        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+          Dashboard
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section contact-section ftco-degree-bg">
+  <div class="container">
+    <div class="row d-flex mb-5">
+      <div class='col-md-6'>
+        <canvas id="chart" width='400' height='400'></canvas>
+      </div>
+      <div class='col-md-6'>
+        <canvas id="chart2" width='400' height='400'></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js"></script>
+<script>
+  var ctx = document.getElementById('chart').getContext('2d');
+  var ctx2 = document.getElementById('chart2').getContext('2d');
+  var data = {
+    labels: ["Users", "Hotels", "Resturant", "Places", "Bookings", "Posts"],
+    datasets: [{
+      label: 'Counts',
+      data: [{{users_count}}, {{hotels_count}}, {{resturant_count}}, {{places_count}}, {{booking_count}}, {{posts_count}}],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+        'rgba(255, 159, 64, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  }
+
+  var options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+
+  var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+    options: options
+  });
+  var barChart = new Chart(ctx2, {
+    type: 'bar',
+    data: data,
+    options: options
+  })
+
+</script>
+
+
+
+{% endblock body %}
