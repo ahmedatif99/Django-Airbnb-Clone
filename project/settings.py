@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+
+    'coverage'
 ]
 
 REST_FRAMEWORK = {
@@ -158,9 +160,9 @@ LANGUAGES = [
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static", "staticroot")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "../"),
     # '/var/www/static/',
 ]
 
@@ -177,7 +179,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 X_FRAME_OPTIONS = 'SAMEPRIGIN'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
